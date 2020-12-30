@@ -10,4 +10,6 @@ public class Resturant {
     public void  displayWaitersName(){
         System.out.println("All waiters working in resturant:"+ resturanctWaitersList);
     }
+
+
 }

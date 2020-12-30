@@ -28,7 +28,18 @@
     <bean id ="teaBean" class="com.springlifecycle.demo.Tea"></bean>
 
    <!-- <bean id="beanScopeBean" class="BeanScope.Restaruant" scope = "prototype">-->
-    <bean id="beanScopeBean" class="BeanScope.Restaruant" scope = "singleton">
+    <bean id="beanScopeBean" class="BeanScope.Restaruant" scope = "singleton" lazy-init="true">
 
     </bean>
+    <!--<bean id="beanLifeCycle" class="BeanLifeCycle.Restaruant" init-method="init" destroy-method="destroy"></bean>-->
+    <!-- for Annotation drivent postcontruct and predistruct
+    <bean id="beanLifeCycle" class="BeanLifeCycle.Restaruant"/>
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
+    -->
+
+    <bean id="orderByBeanPostProcessor" class="OrderbyBeanPostProcessor.Restaruant" init-method="init" destroy-method="destroy"></bean>
+    <bean class="OrderbyBeanPostProcessor.DemoBeanPostProcessor1">
+
+    </bean>
+    <bean class="OrderbyBeanPostProcessor.DemoBeanPostProcessor2"></bean>
 </beans>
