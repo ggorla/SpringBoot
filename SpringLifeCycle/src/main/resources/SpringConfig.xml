@@ -42,4 +42,9 @@
 
     </bean>
     <bean class="OrderbyBeanPostProcessor.DemoBeanPostProcessor2"></bean>
+
+    <bean id="beanFactoryPostProcesser" class="BeanFactoryPostProcesser.Restaruant">
+        <property name="welcomeNote" value="Hi and welcome to our restaruant"></property>
+    </bean>
+    <bean class="BeanFactoryPostProcesser.DemoBeanFactoryPostProcesser"/>
 </beans>
