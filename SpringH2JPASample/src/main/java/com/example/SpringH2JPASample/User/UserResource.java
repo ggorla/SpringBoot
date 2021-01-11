@@ -21,7 +21,11 @@ public class UserResource {
 
     @GetMapping("/users/{id}")
     public User retriveUser(@PathVariable int id){
-        return service.findOne(id);
+        User user =  service.findOne(id);
+        if(user ==null)
+            throw  new UserNotFoundExecption("id-" + id);
+
+        return user;
     }
 
     //where the resources was created and the return the create 201 status code.
