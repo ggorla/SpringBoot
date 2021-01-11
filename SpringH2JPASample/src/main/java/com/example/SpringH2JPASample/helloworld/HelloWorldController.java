@@ -1,4 +1,4 @@
-package com.example.SpringH2JPASample;
+package com.example.SpringH2JPASample.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

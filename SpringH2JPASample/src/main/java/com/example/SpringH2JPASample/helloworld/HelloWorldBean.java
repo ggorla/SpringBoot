@@ -1,4 +1,4 @@
-package com.example.SpringH2JPASample;
+package com.example.SpringH2JPASample.helloworld;
 
 public class HelloWorldBean {
     private  String message;

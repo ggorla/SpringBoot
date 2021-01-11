@@ -1,4 +1,4 @@
-package User;
+package com.example.SpringH2JPASample.User;
 
 
 import org.springframework.stereotype.Component;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Stack;
 
 @Component
 public class UserDaoService {
@@ -29,7 +28,7 @@ public class UserDaoService {
         return  user;
     }
 
-    public User finfOne(int id){
+    public User findOne(int id){
         for(User user:userList){
             if(user.getId()== id){
                 return  user;

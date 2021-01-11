@@ -1,4 +1,4 @@
-package User;
+package com.example.SpringH2JPASample.User;
 
 import java.util.Date;
 
