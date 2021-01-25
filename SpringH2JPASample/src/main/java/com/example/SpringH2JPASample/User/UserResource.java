@@ -1,9 +1,13 @@
 package com.example.SpringH2JPASample.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -20,13 +24,29 @@ public class UserResource {
         return service.findAll();
     }
 
+   /*
+    -- commenting due to Hateoas implmentaion
     @GetMapping("/users/{id}")
     public User retriveUser(@PathVariable int id){
         User user =  service.findOne(id);
         if(user ==null)
             throw  new UserNotFoundExecption("id-" + id);
 
+        Resource
+
         return user;
+    }
+
+    */
+    @GetMapping("/users/{id}")
+    public EntityModel<User> retriveUser(@PathVariable int id){
+        User user = service.findOne(id);
+        if(user == null)
+            throw new UserNotFoundExecption("Id"+id);
+        EntityModel<User> resource = EntityModel.of(user);
+        WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retriveAllUser());
+        resource.add(linkTo.withRel("all-users"));
+        return resource;
     }
 
     //where the resources was created and the return the create 201 status code.
