@@ -1,6 +1,7 @@
 package com.example.SpringH2JPASample.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class UserJPAResource {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private  ChallengeDaoService challengeService;
 
     @Autowired
     private PostRepository postRepository;
@@ -54,6 +58,18 @@ public class UserJPAResource {
         resource.add(linkTo.withRel("all-users"));
         return resource;
     }
+
+
+    @GetMapping("/interviews/{interviewId}")
+    public ResponseEntity<Challenge> retriveInterview(@PathVariable int interviewId){
+        Optional<Challenge> serviceOptional = challengeService.getInterview(interviewId);
+        //checking for interview id present or not
+        if(!serviceOptional.isPresent()){
+            return  ResponseEntity.notFound().build();
+        }
+        return  ResponseEntity.ok().body(service.getInterviewId(id));
+    }
+
 
     //where the resources was created and the return the create 201 status code.
     @PostMapping("/jpa/users")
