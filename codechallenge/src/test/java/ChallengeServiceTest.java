@@ -138,6 +138,7 @@ public class ChallengeServiceTest {
         ChallengeDaoService challenge = new ChallengeDaoService();
         boolean isResult = challenge.isPassing(challengeAnsweredlist);
         Assert.assertFalse("Test case testNullList() fails",isResult);
+        
     }
 
 }
